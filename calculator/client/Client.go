@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/matthewjamesboyle/grpc/calculator/calcproto"
 	"google.golang.org/grpc"
+	"io"
 )
 
 func main() {
@@ -14,16 +15,40 @@ func main() {
 		fmt.Println("failed")
 	}
 	defer conn.Close()
-	c := calcproto.NewSumServiceClient(conn)
-	res, err := c.Sum(context.Background(), &calcproto.SumRequest{
-		Sum: &calcproto.Sum{
-			FirstNum:  10,
-			SecondNum: 3,
-		},
+	c := calcproto.NewPrimeServiceClient(conn)
+	//res, err := c.Sum(context.Background(), &calcproto.SumRequest{
+	//	Sum: &calcproto.Sum{
+	//		FirstNum:  10,
+	//		SecondNum: 3,
+	//	},
+	//})
+	//if err != nil {
+	//	fmt.Println("Greet client call failed")
+	//}
+	//
+	//fmt.Println(res.Result)
+	doServerStreaming(c)
+}
+
+func doServerStreaming(c calcproto.PrimeServiceClient) {
+	fmt.Println("starting stream service")
+	s, err := c.PrimeDecompStream(context.Background(), &calcproto.PrimeDecomposition{
+		Num: 320,
 	})
+
 	if err != nil {
-		fmt.Println("Greet client call failed")
+		panic(err)
 	}
 
-	fmt.Println(res.Result)
+	for {
+		msg, err := s.Recv()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			fmt.Println(err.Error())
+		}
+
+		fmt.Println(msg.GetNum())
+	}
 }

@@ -21,3 +21,16 @@ service SumService {
 
     rpc Sum(SumRequest) returns (SumResponse) {};
 }
+
+message PrimeDecomposition {
+    int32 num = 1;
+}
+
+message PrimeDecompositionResponse {
+    int32 num = 1;
+}
+
+
+service PrimeService {
+    rpc PrimeDecompStream(PrimeDecomposition) returns (stream PrimeDecompositionResponse ){}
+}

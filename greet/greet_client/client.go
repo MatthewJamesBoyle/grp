@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/matthewjamesboyle/grpc/greet/greetpb"
 	"google.golang.org/grpc"
+	"io"
 )
 
 func main() {
@@ -15,7 +16,25 @@ func main() {
 	}
 	defer conn.Close()
 	c := greetpb.NewGreetServiceClient(conn)
-	res, err := c.Greet(context.Background(), &greetpb.GreetRequest{
+	//res, err := c.Greet(context.Background(), &greetpb.GreetRequest{
+	//	Greeting: &greetpb.Greeting{
+	//		FirstName: "Matt",
+	//		LastName:  "Boyle",
+	//	},
+	//})
+	//
+	//if err != nil {
+	//	fmt.Println("Greet client call failed")
+	//}
+	//
+	//fmt.Println(res.Result)
+
+	doServerStreaming(c)
+}
+
+func doServerStreaming(c greetpb.GreetServiceClient) {
+	fmt.Println("starting stream service")
+	s, err := c.GreetManyTimes(context.Background(), &greetpb.GreetManyTimesRequest{
 		Greeting: &greetpb.Greeting{
 			FirstName: "Matt",
 			LastName:  "Boyle",
@@ -23,8 +42,19 @@ func main() {
 	})
 
 	if err != nil {
-		fmt.Println("Greet client call failed")
+		panic(err)
 	}
 
-	fmt.Println(res.Result)
+	for {
+		msg, err := s.Recv()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			fmt.Println("wtf")
+		}
+
+		fmt.Println(msg.GetResult())
+	}
+
 }

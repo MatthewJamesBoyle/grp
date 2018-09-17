@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="160da2b4-c290-431f-8355-f51fbceb936f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/grpc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/grpc.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../greet/greet_server/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/../greet/greet_server/server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../greet/greetpb/greet.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/../greet/greetpb/greet.pb.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../greet/greetpb/greet.proto" beforeDir="false" afterPath="$PROJECT_DIR$/../greet/greetpb/greet.proto" afterDir="false" />
-    </list>
+    <list default="true" id="160da2b4-c290-431f-8355-f51fbceb936f" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +12,7 @@
     <session id="1272756386">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
@@ -131,7 +124,7 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
     <option name="width" value="1440" />
-    <option name="height" value="805" />
+    <option name="height" value="812" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -184,7 +177,7 @@
     </option>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="812" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="810" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
