@@ -15,7 +15,7 @@ func (*server) Sum(ctx context.Context, r *calcproto.SumRequest) (*calcproto.Sum
 	return &calcproto.SumResponse{Result: r.GetSum().GetFirstNum() + r.GetSum().GetSecondNum()}, nil
 }
 
-func (*server) PrimeDecompStream(req *calcproto.PrimeDecomposition, stream calcproto.PrimeService_PrimeDecompStreamServer) error {
+func (*server) PrimeDecompStream(req *calcproto.PrimeDecomposition, stream calcproto.SumService_PrimeDecompStreamServer) error {
 	fmt.Println(fmt.Sprintf("%s incoming", req.Num))
 	divsior := int32(2)
 	num := req.GetNum()

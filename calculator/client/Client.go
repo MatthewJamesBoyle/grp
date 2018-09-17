@@ -15,7 +15,7 @@ func main() {
 		fmt.Println("failed")
 	}
 	defer conn.Close()
-	c := calcproto.NewPrimeServiceClient(conn)
+	c := calcproto.NewSumServiceClient(conn)
 	//res, err := c.Sum(context.Background(), &calcproto.SumRequest{
 	//	Sum: &calcproto.Sum{
 	//		FirstNum:  10,
@@ -30,10 +30,10 @@ func main() {
 	doServerStreaming(c)
 }
 
-func doServerStreaming(c calcproto.PrimeServiceClient) {
+func doServerStreaming(c calcproto.SumServiceClient) {
 	fmt.Println("starting stream service")
 	s, err := c.PrimeDecompStream(context.Background(), &calcproto.PrimeDecomposition{
-		Num: 320,
+		Num: 32000,
 	})
 
 	if err != nil {
